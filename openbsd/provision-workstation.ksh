@@ -23,7 +23,7 @@ check_and_install_package () {
 
 		 # Attempt installation using pkg_add
 		print "Attempting to install $package_name using pkg_add..."
-		if pkg_add "$package_name"; then
+		if sudo pkg_add "$package_name"; then
 			print "$package_name installed successfully."
 		else
 			print "Error: Failed to install $package_name."
@@ -81,6 +81,20 @@ then
 
 	echo "IMPORTANT: Run ':PlugInstall' the first time you open NeoVim to install plugins."
 fi
+
+yn "Configure fish?"
+read CONFISH
+if [ $CONFISH == "y" ]
+then
+	mkdir -p ~/.config
+	mkdir -p ~/.config/fish
+
+	check_and_install_package "fish"
+	#chsh -s /usr/local/bin/fish
+	cp defaults/config.fish ~/.config/fish/config.fish
+
+fi
+
 
 
 
