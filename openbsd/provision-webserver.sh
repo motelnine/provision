@@ -30,7 +30,7 @@ then
 		# Copy nginx conf to /etc/nginx.conf
 		cp /tmp/provision-nginx-config-tmp.conf $NGINX_CONFIG_LOCATION
 		echo "nginx.conf copied to $NGINX_CONFIG_LOCATION"
-		mkdir etc/nginx/sites-available
+		mkdir /etc/nginx/sites-available
 		mkdir /etc/nginx/sites-enabled
 		/etc/rc.d/nginx restart
 
