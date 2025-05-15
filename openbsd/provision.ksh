@@ -42,15 +42,15 @@ yn "Install [neovim] editor?"
 read NEOVIM
 if [ $NEOVIM == "y" ]
 then
-	echo "pkg_add neovim"
-	echo "ln -s /usr/local/bin/nvim /usr/local/bin/vim"
+	pkg_add neovim
+	ln -s /usr/local/bin/nvim /usr/local/bin/vim
 fi
 
 yn "Install shells [bash,fish]?"
 read BASH
 if [ $BASH == "y" ]
 then
-	echo "pkg_add bash fish"
+	pkg_add bash fish
 fi
 
 
