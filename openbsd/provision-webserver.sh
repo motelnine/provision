@@ -18,6 +18,7 @@ then
 	sudo pkg_add nginx
 fi
 
+
 # Fetch default nginx configuration
 yn "default nginx.conf?"
 read NGINXCONF
@@ -37,11 +38,39 @@ then
 	sudo /etc/rc.d/nginx restart
 fi
 
+
 # Install nginx prompt
 yn "Hugo CDN?"
 read HUGO
 if [ $HUGO == "y" ]
 then
 	sudo pkg_add hugo
+fi
+
+
+# Install golang
+yn "Golang?"
+read GOLANG
+if [ $GOLANG == "y" ]
+then
+	sudo pkg_add go
+fi
+
+
+# Install rsync
+yn "rsync?"
+read RSYNC
+if [ $RSYNC == "y" ]
+then
+	sudo pkg_add rsync
+fi
+
+
+# Install wkhtmltopdf
+yn "wkhtmltopdf?"
+read HTMLTOPDF
+if [ $HTMLTOPDF == "y" ]
+then
+	sudo pkg_add wkhtmltopdf
 fi
 

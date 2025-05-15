@@ -1,6 +1,5 @@
-alias ls='ls --color'
 alias less='less -r'
-alias weather='curl wttr.in/Chandler'
+alias weather='curl wttr.in/Phoenix'
 alias ll='ls -al'
 alias kubectl='sudo microk8s kubectl'
 
