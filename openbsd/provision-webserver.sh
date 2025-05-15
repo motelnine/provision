@@ -1,5 +1,6 @@
 #!/bin/ksh
 
+
 # Echos Y/N prompt to sell
 yn () {
   printf "Install '%s' [y/n] " "$1"
@@ -10,11 +11,11 @@ NGINX_CONFIG_LOCATION="/etc/nginx.conf"
 
 
 # Install nginx prompt
-yn "nginx?"
+yn "nginx webserver?"
 read NGINX
 if [ $NGINX == "y" ]
 then
-	pkg_add nginx
+	sudo pkg_add nginx
 fi
 
 # Fetch default nginx configuration
@@ -24,13 +25,23 @@ if [ $NGINXCONF == "y" ]
 then
 
 	# Copy nginx conf to /etc/nginx.conf
-	cp defaults/nginx.conf $NGINX_CONFIG_LOCATION
+	sudo cp $NGINX_CONFIG_LOCATION /tmp/nginx.conf.backup
+	sudo cp defaults/nginx.conf $NGINX_CONFIG_LOCATION
 	echo "nginx.conf copied to $NGINX_CONFIG_LOCATION"
-	mkdir -p /etc/nginx/sites-available
-	mkdir -p /etc/nginx/sites-enabled
+	echo "nginx.conf backup placed in /tmp/nginx.conf.backup"
+
+	sudo mkdir -p /etc/nginx/sites-available
+	sudo mkdir -p /etc/nginx/sites-enabled
 
 	echo "restarting nginx..."
-	/etc/rc.d/nginx restart
+	sudo /etc/rc.d/nginx restart
+fi
 
+# Install nginx prompt
+yn "Hugo CDN?"
+read HUGO
+if [ $HUGO == "y" ]
+then
+	sudo pkg_add hugo
 fi
 
