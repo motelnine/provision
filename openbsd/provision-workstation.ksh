@@ -43,7 +43,7 @@ yn "Install neofetch?"
 read NEOVIM
 if [ $NEOVIM == "y" ]
 then
-	pkg_add neofetch
+	sudo pkg_add neofetch
 fi
 
 yn "Configure neovim"
@@ -76,10 +76,7 @@ then
 	# Download colorscheme
 	wget https://raw.githubusercontent.com/Reewr/vim-monokai-phoenix/master/colors/monokai-phoenix.vim -O ~/.config/nvim/colors/monokai-phoenix.vim 
 
-	# make directories
-	mkdir -p ~/.config
-	mkdir -p ~/.config/nvim
-
+	# Copy default neovim config file
 	cp defaults/init.vim ~/.config/nvim/init.vim
 
 	echo "IMPORTANT: Run ':PlugInstall' the first time you open NeoVim to install plugins."
