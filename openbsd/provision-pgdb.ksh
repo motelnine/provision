@@ -39,8 +39,23 @@ yn "PostgreSQL"
 read PGSQL
 if [ $PGSQL == "y" ]
 then
+	echo "Installing PostgreSQL..."
 	sudo pkg_add postgresql-server
+
+	echo "Initializing PostgreSQL database..."
+	sudo -u _postgresql initdb -D /var/postgresql/data -U postgres -W -A scram-sha-256 -E UTF8 --locale=en_US.UTF-8
+
+	echo "Enabling PostgreSQL service..."
+	sudo rcctl start postgresql
+	sudo rcctl enable postgresql
+
+	echo "[NOTE]: The PosrgreSQL super user is _postgresql"
+	echo "[....]: To test, as this user execute: psql -U postgres"
 fi
 
+
+# TODO PostgreSQL default configuration:
+#   /var/postgresql/data/pg_hba.conf
+#   /var/postgresql/data/postgresql.conf
 
 echo "Done please refer to hardening documentation to enhance security."
