@@ -67,4 +67,14 @@ then
 fi
 
 
+
+echo "Disabling sendmail..."
+sudo rcctl disable sendmail
+sudo rcctl status sendmail
+
+echo "Disableing smtp..."
+sudo rcctl disable smtpd
+sudo rcctl status smtpd
+
+
 echo "Done please refer to hardening documentation to enhance security."
