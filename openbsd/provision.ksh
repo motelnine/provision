@@ -59,7 +59,7 @@ fi
 
 
 # Install htop
-yn "Install shells [bash,fish]?"
+yn "Install shells [htop]?"
 read HTOP
 if [ $HTOP == "y" ]
 then
