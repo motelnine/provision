@@ -40,7 +40,7 @@ check_and_install_package "git"
 
 
 # Install neovim
-yn "Install [neovim] editor?"
+yn "neovim editor?"
 read NEOVIM
 if [ $NEOVIM == "y" ]
 then
@@ -50,7 +50,7 @@ fi
 
 
 # Install bash and fish
-yn "Install shells [bash,fish]?"
+yn "shells: bash,fish?"
 read BASH
 if [ $BASH == "y" ]
 then
@@ -59,7 +59,7 @@ fi
 
 
 # Install htop
-yn "Install shells [htop]?"
+yn "htop"
 read HTOP
 if [ $HTOP == "y" ]
 then
