@@ -96,11 +96,4 @@ then
 fi
 
 
-
-
-
-
-
-
-
-
+echo "Done please refer to hardening documentation to enhance security."

@@ -38,6 +38,8 @@ check_and_install_package () {
 check_and_install_package "wget"
 check_and_install_package "git"
 
+
+# Install neovim
 yn "Install [neovim] editor?"
 read NEOVIM
 if [ $NEOVIM == "y" ]
@@ -46,6 +48,8 @@ then
 	ln -s /usr/local/bin/nvim /usr/local/bin/vim
 fi
 
+
+# Install bash and fish
 yn "Install shells [bash,fish]?"
 read BASH
 if [ $BASH == "y" ]
@@ -54,10 +58,13 @@ then
 fi
 
 
+# Install htop
+yn "Install shells [bash,fish]?"
+read HTOP
+if [ $HTOP == "y" ]
+then
+	pkg_add htop
+fi
 
 
-#kg_add neovim sudo bash
-
-
-
-
+echo "Done please refer to hardening documentation to enhance security."

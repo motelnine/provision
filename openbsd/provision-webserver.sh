@@ -74,3 +74,4 @@ then
 	sudo pkg_add wkhtmltopdf
 fi
 
+echo "Done please refer to hardening documentation to enhance security."
