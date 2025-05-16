@@ -44,8 +44,8 @@ yn "neovim editor?"
 read NEOVIM
 if [ $NEOVIM == "y" ]
 then
-	pkg_add neovim
-	ln -s /usr/local/bin/nvim /usr/local/bin/vim
+	sudo pkg_add neovim
+	sudo ln -s /usr/local/bin/nvim /usr/local/bin/vim
 fi
 
 
@@ -54,7 +54,7 @@ yn "shells: bash,fish?"
 read BASH
 if [ $BASH == "y" ]
 then
-	pkg_add bash fish
+	sudo pkg_add bash fish
 fi
 
 
