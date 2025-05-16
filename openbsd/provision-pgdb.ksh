@@ -39,8 +39,7 @@ yn "PostgreSQL"
 read PGSQL
 if [ $PGSQL == "y" ]
 then
-	doas pkg_add postgresql-server
-
+	sudo pkg_add postgresql-server
 fi
 
 
