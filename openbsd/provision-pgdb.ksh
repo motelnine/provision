@@ -35,46 +35,13 @@ check_and_install_package () {
 }
 
 
-check_and_install_package "wget"
-check_and_install_package "git"
-
-
-# Install neovim
-yn "neovim editor?"
-read NEOVIM
-if [ $NEOVIM == "y" ]
+yn "PostgreSQL"
+read PGSQL
+if [ $PGSQL == "y" ]
 then
-	pkg_add neovim
-	ln -s /usr/local/bin/nvim /usr/local/bin/vim
+	doas pkg_add postgresql-server
+
 fi
-
-
-# Install bash and fish
-yn "shells: bash,fish?"
-read BASH
-if [ $BASH == "y" ]
-then
-	pkg_add bash fish
-fi
-
-
-# Install htop
-yn "htop"
-read HTOP
-if [ $HTOP == "y" ]
-then
-	sudo pkg_add htop
-fi
-
-
-# Disable sendmail/smtp bullshit
-echo "Disabling sendmail..."
-sudo rcctl stop sendmail
-sudo rcctl disable sendmail
-
-echo "Disableing smtp..."
-sudo rcctl stop smtpd
-sudo rcctl disable smtpd
 
 
 echo "Done please refer to hardening documentation to enhance security."
