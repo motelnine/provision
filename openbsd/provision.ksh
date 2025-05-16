@@ -63,7 +63,7 @@ yn "htop"
 read HTOP
 if [ $HTOP == "y" ]
 then
-	pkg_add htop
+	sudo pkg_add htop
 fi
 
 
