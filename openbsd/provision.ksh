@@ -23,7 +23,7 @@ check_and_install_package () {
 
 		 # Attempt installation using pkg_add
 		print "Attempting to install $package_name using pkg_add..."
-		if sudo pkg_add "$package_name"; then
+		if doas pkg_add "$package_name"; then
 			print "$package_name installed successfully."
 		else
 			print "Error: Failed to install $package_name."
@@ -44,8 +44,8 @@ yn "neovim editor?"
 read NEOVIM
 if [ $NEOVIM == "y" ]
 then
-	sudo pkg_add neovim
-	sudo ln -s /usr/local/bin/nvim /usr/local/bin/vim
+	doas pkg_add neovim
+	doas ln -s /usr/local/bin/nvim /usr/local/bin/vim
 fi
 
 
@@ -54,7 +54,7 @@ yn "shells: bash,fish?"
 read BASH
 if [ $BASH == "y" ]
 then
-	sudo pkg_add bash fish
+	doas pkg_add bash fish
 fi
 
 
@@ -63,18 +63,18 @@ yn "htop"
 read HTOP
 if [ $HTOP == "y" ]
 then
-	sudo pkg_add htop
+	doas pkg_add htop
 fi
 
 
 # Disable sendmail/smtp bullshit
 echo "Disabling sendmail..."
-sudo rcctl stop sendmail
-sudo rcctl disable sendmail
+doas rcctl stop sendmail
+doas rcctl disable sendmail
 
 echo "Disableing smtp..."
-sudo rcctl stop smtpd
-sudo rcctl disable smtpd
+doas rcctl stop smtpd
+doas rcctl disable smtpd
 
 
 echo "Done please refer to hardening documentation to enhance security."

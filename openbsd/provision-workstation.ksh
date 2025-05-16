@@ -23,7 +23,7 @@ check_and_install_package () {
 
 		 # Attempt installation using pkg_add
 		print "Attempting to install $package_name using pkg_add..."
-		if sudo pkg_add "$package_name"; then
+		if doas pkg_add "$package_name"; then
 			print "$package_name installed successfully."
 		else
 			print "Error: Failed to install $package_name."
@@ -43,7 +43,7 @@ yn "Install neofetch?"
 read NEOVIM
 if [ $NEOVIM == "y" ]
 then
-	sudo pkg_add neofetch
+	doas pkg_add neofetch
 fi
 
 yn "Configure neovim"

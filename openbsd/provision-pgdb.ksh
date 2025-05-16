@@ -23,7 +23,7 @@ check_and_install_package () {
 
 		 # Attempt installation using pkg_add
 		print "Attempting to install $package_name using pkg_add..."
-		if sudo pkg_add "$package_name"; then
+		if doas pkg_add "$package_name"; then
 			print "$package_name installed successfully."
 		else
 			print "Error: Failed to install $package_name."
@@ -40,14 +40,14 @@ read PGSQL
 if [ $PGSQL == "y" ]
 then
 	echo "Installing PostgreSQL..."
-	sudo pkg_add postgresql-server
+	doas pkg_add postgresql-server
 
 	echo "Initializing PostgreSQL database..."
-	sudo -u _postgresql initdb -D /var/postgresql/data -U postgres -W -A scram-sha-256 -E UTF8 --locale=en_US.UTF-8
+	doas -u _postgresql initdb -D /var/postgresql/data -U postgres -W -A scram-sha-256 -E UTF8 --locale=en_US.UTF-8
 
 	echo "Enabling PostgreSQL service..."
-	sudo rcctl start postgresql
-	sudo rcctl enable postgresql
+	doas rcctl start postgresql
+	doas rcctl enable postgresql
 
 	echo "[NOTE]: The PosrgreSQL super user is _postgresql"
 	echo "[....]: To test, as this user execute: psql -U postgres"

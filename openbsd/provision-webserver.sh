@@ -15,7 +15,7 @@ yn "nginx webserver?"
 read NGINX
 if [ $NGINX == "y" ]
 then
-	sudo pkg_add nginx
+	doas pkg_add nginx
 fi
 
 
@@ -26,16 +26,16 @@ if [ $NGINXCONF == "y" ]
 then
 
 	# Copy nginx conf to /etc/nginx.conf
-	sudo cp $NGINX_CONFIG_LOCATION /tmp/nginx.conf.backup
-	sudo cp defaults/nginx.conf $NGINX_CONFIG_LOCATION
+	doas cp $NGINX_CONFIG_LOCATION /tmp/nginx.conf.backup
+	doas cp defaults/nginx.conf $NGINX_CONFIG_LOCATION
 	echo "nginx.conf copied to $NGINX_CONFIG_LOCATION"
 	echo "nginx.conf backup placed in /tmp/nginx.conf.backup"
 
-	sudo mkdir -p /etc/nginx/sites-available
-	sudo mkdir -p /etc/nginx/sites-enabled
+	doas mkdir -p /etc/nginx/sites-available
+	doas mkdir -p /etc/nginx/sites-enabled
 
 	echo "restarting nginx..."
-	sudo /etc/rc.d/nginx restart
+	doas /etc/rc.d/nginx restart
 fi
 
 
@@ -44,7 +44,7 @@ yn "Hugo CDN?"
 read HUGO
 if [ $HUGO == "y" ]
 then
-	sudo pkg_add hugo
+	doas pkg_add hugo
 fi
 
 
@@ -53,7 +53,7 @@ yn "Golang?"
 read GOLANG
 if [ $GOLANG == "y" ]
 then
-	sudo pkg_add go
+	doas pkg_add go
 fi
 
 
@@ -62,7 +62,7 @@ yn "rsync?"
 read RSYNC
 if [ $RSYNC == "y" ]
 then
-	sudo pkg_add rsync
+	doas pkg_add rsync
 fi
 
 
@@ -71,7 +71,7 @@ yn "wkhtmltopdf?"
 read HTMLTOPDF
 if [ $HTMLTOPDF == "y" ]
 then
-	sudo pkg_add wkhtmltopdf
+	doas pkg_add wkhtmltopdf
 fi
 
 echo "Done please refer to hardening documentation to enhance security."
