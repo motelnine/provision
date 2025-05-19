@@ -39,6 +39,15 @@ check_and_install_package "wget"
 check_and_install_package "git"
 
 
+# Enable doas if not enabled
+if [[ -e "/etc/doas.conf" ]]; then
+	echo "/etc/doas.conf exists. Assuming doas is enabled."
+else
+	echo -n "Enabling doas..."
+	echo 'permit nopass keepenv :wheel' > /etc/doas.conf
+	echo "done."
+fi
+
 # Install neovim
 yn "neovim editor?"
 read NEOVIM
